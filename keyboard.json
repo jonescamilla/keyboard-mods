@@ -126,6 +126,33 @@
         {
           "type": "basic",
           "from": {
+            "key_code": "right_gui",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "caps_lock pressed",
+                "value": 1
+              }
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "caps_lock pressed",
+                "value": 0
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
             "key_code": "spacebar",
             "modifiers": {
               "optional": [
