@@ -1,5 +1,5 @@
 # keyboard-mods
-[JSON](obins-kit-colemak-dh.json) of keyboard modifications made in Obinskit for colemak-dh 
+[JSON](obins-kit-colmak-dh.json) of keyboard modifications made in Obinskit for colemak-dh 
 
 [Bundle](ColemakDH-ansi.bundle) for native macOS keyboard inputs to colemak-dh
 
