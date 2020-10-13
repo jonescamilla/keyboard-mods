@@ -5,4 +5,4 @@
 
 [JSON](karabiner-custom.json) of custom layers utilizing Karabiner-Elements
 
-QMK [folder](annepro2) for annepro2 with custom `keymap.c` for colemak-dh
+QMK [folder](annepro2) for annepro2 with custom [keymap.c](annepro2/keymaps/default/keymap.c) for colemak-dh
