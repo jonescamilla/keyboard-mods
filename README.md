@@ -1,8 +1,8 @@
 # keyboard-mods
-JSON of keyboard modifications made in Obinskit for colemak-dh
+[JSON](obins-kit-colemak-dh.json) of keyboard modifications made in Obinskit for colemak-dh 
 
-Bundle for native macOS keyboard inputs to colemak-dh
+[Bundle](ColemakDH-ansi.bundle) for native macOS keyboard inputs to colemak-dh
 
-JSON of custom layers utilizing Karabiner-Elements
+[JSON](karabiner-custom.json) of custom layers utilizing Karabiner-Elements
 
-QMK folder for annepro2 with custom `keymap.c` for colemak-dh
+QMK [folder](annepro2) for annepro2 with custom `keymap.c` for colemak-dh
