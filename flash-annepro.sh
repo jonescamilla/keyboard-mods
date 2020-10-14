@@ -6,7 +6,7 @@ cp /Users/admin/git/keyboard-mods/annepro2/keymaps/default/keymap.c /Users/admin
 cd /Users/admin/Documents/annepro/annepro-qmk/
 
 # run the build for qmk
-echo ""
+
 make annepro2/c18
 
 # move the built default to annepro tools
