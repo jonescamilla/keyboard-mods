@@ -33,6 +33,7 @@
   #define KC_GUI_SLSH LGUI(KC_SLSH)
   #define KC_GUI_DOT LGUI(KC_DOT)
 
+// cases/keycodes for process_record_user
 enum custom_keycodes {
   LINKEDIN = AP2_SAFE_RANGE,
   GITHUB,
@@ -40,6 +41,7 @@ enum custom_keycodes {
   SHOW_HOVER
 };
 
+// function that handles sending strings based on case pressed by keeb
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
   case LINKEDIN:
@@ -66,12 +68,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 };
 
+// keyboard layers defined
 enum anne_pro_layers {
   _BASE_LAYER,
   _MO_1,
   _MO_2,
 };
 
+// keymaps
 const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  /* Layer _BASE_LAYER
