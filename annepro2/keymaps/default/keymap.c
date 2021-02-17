@@ -4,29 +4,12 @@
 
 // _MO_1
   // LAUNCH
-  #define KC_VS_LAUNCH LSFT(LCTL(LALT(LGUI(KC_V))))
   #define KC_TERMINAL_LAUNCH LSFT(LCTL(LALT(LGUI(KC_T))))
   #define KC_BROWSER_LAUNCH LSFT(LCTL(LALT(LGUI(KC_S))))
-  #define KC_CALENDAR_LAUNCH LSFT(LCTL(LALT(LGUI(KC_D))))
-  #define KC_PREFERENCES_LAUNCH LSFT(LALT(KC_X))
   // AMETHYST
   #define KC_AMETHYST_RELAUNCH LSFT(LCTL(LALT(LGUI(KC_B))))
   #define KC_AMETHYST_FOCUS_TO_MAIN LSFT(LALT(KC_ENT))
-  // VS MACROS
-  #define KC_VS_SEARCH LSFT(LGUI(KC_P))
-  #define KC_VS_TERMINAL LCTL(KC_GRV)
-  #define KC_VS_PROJ_SEARCH LGUI(KC_P)
-  #define KC_VS_DELETE_LINE LSFT(LGUI(KC_BSLS))
-  #define KC_VS_SUGGESTIONS LGUI(KC_I)
 
-// _MO_2
-  // LAUNCH
-  #define KC_MAIL_LAUNCH LSFT(LCTL(LALT(LGUI(KC_M))))
-  #define KC_MUSIC_LAUNCH LSFT(LCTL(LALT(LGUI(KC_SCLN))))
-  // VS MACROS
-  #define KC_PREV_TERMINAL LSFT(LGUI(KC_J))
-  #define KC_NEXT_TERMINAL LSFT(LGUI(KC_K))
-  
 // COMMAND MACROS
   #define KC_GUI_BSPC LGUI(KC_BSPC)
   #define KC_GUI_H LGUI(KC_H)
@@ -39,12 +22,15 @@ enum custom_keycodes {
   LINKEDIN = AP2_SAFE_RANGE,
   GITHUB,
   CONSOLE_LOG,
-  VS_SHOW_HOVER
+	NVIM_TERM,
+	NVIM_FUZZY_FINDER,
+	NVIM_FERN
 };
 
 // function that handles sending strings based on case pressed by keeb
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+	// personal links
   case LINKEDIN:
     if (record->event.pressed) {
       SEND_STRING("https://www.linkedin.com/in/jon-escamilla/");
@@ -55,16 +41,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SEND_STRING("https://github.com/jonescamilla");
     } else {}
     break;
+	// dev assistancefern
   case CONSOLE_LOG: 
     if (record->event.pressed) {
       SEND_STRING("console.log(");
     } else {}
     break;
-  case VS_SHOW_HOVER: 
-    if (record->event.pressed) {
-      SEND_STRING(SS_LGUI("k") SS_LGUI("i"));
-    } else {}
-    break;
+	// nvim settings
+	case NVIM_TERM:
+		if (record->event.pressed) {
+			SEND_STRING("\\t");
+		} else {}
+		break;
+	case NVIM_FUZZY_FINDER:
+		if (record->event.pressed) {
+			SEND_STRING("\\p");
+		} else {}
+		break;
+	case NVIM_FERN:
+		if (record->event.pressed) {
+			SEND_STRING("\\f");
+		} else {}
+		break;
   }
   return true;
 };
@@ -77,7 +75,7 @@ enum anne_pro_layers {
 };
 
 // keymaps
-const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {	// prettier-ignore
 
  /* Layer _BASE_LAYER
   * ,-----------------------------------------------------------------------------------------.
@@ -107,7 +105,7 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * |-----------------------------------------------------------------------------------------+
   * |        |     |     |     |     |     |     |     | Up  |     |     |     |     |        |
   * |-----------------------------------------------------------------------------------------+
-  * | Trns    |Shift|     |     |     |     |     |Left |Down |Right|Play |  ~  |   Enter     |
+  * | Trns    |Shift|Ctrl |     |     |     |     |Left |Down |Right|Play |  ~  |   Enter     |
   * |-----------------------------------------------------------------------------------------+
   * | Shift      |     |     |     |     |     |     |     |     |     |     |       Up       |
   * |-----------------------------------------------------------------------------------------+
@@ -117,9 +115,9 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MO_1] = KEYMAP(
     KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, 
-    KC_CTRL_TAB, CONSOLE_LOG, KC_VS_TERMINAL, KC_VS_PROJ_SEARCH, KC_VS_SEARCH, KC_AMETHYST_RELAUNCH, KC_PREV_TERMINAL, KC_VS_SUGGESTIONS, KC_UP, VS_SHOW_HOVER, KC_NO, KC_NO, KC_NO, KC_VS_DELETE_LINE,
-    KC_TRNS, KC_LSFT, KC_NO, KC_BROWSER_LAUNCH, KC_TERMINAL_LAUNCH, KC_NO, KC_NEXT_TERMINAL, KC_LEFT, KC_DOWN, KC_RGHT, KC_MPLY, KC_GRV, KC_AMETHYST_FOCUS_TO_MAIN,
-    KC_TRNS, KC_PREFERENCES_LAUNCH, KC_NO, KC_CALENDAR_LAUNCH, KC_VS_LAUNCH, KC_NO, KC_MAIL_LAUNCH, KC_NO, KC_NO, KC_GUI_DOT, KC_GUI_SLSH, KC_UP,
+    KC_CTRL_TAB, CONSOLE_LOG, NVIM_FERN, KC_TRNS, NVIM_FUZZY_FINDER, KC_AMETHYST_RELAUNCH, KC_NO, KC_NO, KC_UP, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    KC_TRNS, KC_LSFT, KC_LCTL, KC_NO, KC_NO, KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_MPLY, KC_GRV, KC_AMETHYST_FOCUS_TO_MAIN,
+    KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_GUI_DOT, KC_GUI_SLSH, KC_UP,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_LALT, MO(_MO_2), KC_LEFT, KC_DOWN, KC_RGHT
   ),
 
@@ -139,11 +137,11 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MO_2] = KEYMAP( /* Base */
     KC_NO, KC_AP2_BT1, KC_AP2_BT2, KC_AP2_BT3, KC_AP2_BT4, KC_AP2_BT_UNPAIR, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_VOLD, KC_VOLU, KC_GUI_BSPC,
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_MUSIC_LAUNCH, LINKEDIN, GITHUB, KC_GUI_H,
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, LINKEDIN, GITHUB, KC_GUI_H,
     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_MRWD, KC_MPLY, KC_MFFD, KC_NO,
     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_GUI_DOT, KC_GUI_SLSH, KC_UP,
     KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT
-  ),
+  ), // prettier-ignore-end
 };
 
 const uint16_t keymaps_size = sizeof(keymaps);
