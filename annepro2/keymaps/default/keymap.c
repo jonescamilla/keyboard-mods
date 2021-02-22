@@ -26,7 +26,7 @@ enum custom_keycodes {
 	NVIM_FUZZY_FINDER,
 	NVIM_FERN
 };
-
+// fobbri
 // function that handles sending strings based on case pressed by keeb
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -116,7 +116,7 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {	// prettier-ignore
   [_MO_1] = KEYMAP(
     KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, 
     KC_CTRL_TAB, CONSOLE_LOG, NVIM_FERN, KC_TRNS, NVIM_FUZZY_FINDER, KC_AMETHYST_RELAUNCH, KC_NO, KC_NO, KC_UP, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_TRNS, KC_LSFT, KC_LCTL, KC_NO, KC_NO, KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_MPLY, KC_GRV, KC_AMETHYST_FOCUS_TO_MAIN,
+    KC_TRNS, KC_LSFT, KC_LCTL, KC_NO, NVIM_TERM, KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_MPLY, KC_GRV, KC_AMETHYST_FOCUS_TO_MAIN,
     KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_GUI_DOT, KC_GUI_SLSH, KC_UP,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_LALT, MO(_MO_2), KC_LEFT, KC_DOWN, KC_RGHT
   ),
